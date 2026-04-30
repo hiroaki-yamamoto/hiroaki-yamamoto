@@ -52,13 +52,3 @@
 ```
 
     
-
----
-
-![](./4-productive-time.svg)
-
-```
-![](https://raw.githubusercontent.com/hiroaki-yamamoto/hiroaki-yamamoto/main/profile-summary-card-output/outrun/4-productive-time.svg)
-```
-
-    
