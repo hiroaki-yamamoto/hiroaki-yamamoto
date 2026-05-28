@@ -10,25 +10,18 @@ jobs:
   build:
     runs-on: ubuntu-latest
     name: generate
-    permissions:
-      contents: write
 
     steps:
+      - uses: actions/create-github-app-token@v3
+        id: app-token
+        with:
+          client-id: ${{ secrets.CLI_ID }}
+          private-key: ${{ secrets.CLI_PRV }}
       - uses: actions/checkout@v6
+        with:
+          token: ${{ steps.app-token.outputs.token }}
       - uses: vn7n24fzkq/github-profile-summary-cards@release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           USERNAME: ${{ github.repository_owner }}
-          AUTO_PUSH: false
-      - name: commit
-        run: |
-          git config user.name "Hiroaki Yamamoto [bot]"
-          git config user.email "5356011+hiroaki-yamamoto@users.noreply.github.com"
-          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${REPO}.git
-          git add .
-          git commit -m 'Generate profile summary cards'
-          git push
         env:
-          REPO: ${{ github.repository }}
-          GITHUB_TOKEN: ${{secrets.COMMIT_TOKEN}}
+          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
