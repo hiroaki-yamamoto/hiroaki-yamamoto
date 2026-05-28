@@ -23,7 +23,7 @@ jobs:
           AUTO_PUSH: false
       - name: commit
         run: |
-          git config user.name "Hiroaki Yamamoto"
+          git config user.name "Hiroaki Yamamoto [bot]"
           git config user.email "5356011+hiroaki-yamamoto@users.noreply.github.com"
           git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${REPO}.git
           git add .
