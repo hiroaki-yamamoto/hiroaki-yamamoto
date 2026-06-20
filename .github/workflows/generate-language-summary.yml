@@ -18,7 +18,7 @@ jobs:
           client-id: ${{ secrets.CLI_ID }}
           private-key: ${{ secrets.CLI_PRV }}
           permission-contents: write
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           token: ${{ steps.app-token.outputs.token }}
       - uses: vn7n24fzkq/github-profile-summary-cards@release
